@@ -62,9 +62,9 @@ response is sent.
 
 :data:`g` is a special object that is unique for each request. It is
 used to store data that might be accessed by multiple functions during
-the request. The connection is stored and reused instead of creating a
-new connection if ``get_db`` is called a second time in the same
-request.
+the request. The connection is created and stored in the first call to
+``get_db`` in a request, and it is reused in subsequence calls to ``get_db``
+in the same request, i.e., only one database connection is create per request.
 
 :data:`current_app` is another special object that points to the Flask
 application handling the request. Since you used an application factory,
